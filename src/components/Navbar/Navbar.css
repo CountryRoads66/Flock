@@ -1,0 +1,203 @@
+.navbar {
+	list-style-type: none;
+	z-index: 10;
+	background: var(--header);
+	backdrop-filter: blur(18px);
+	display: grid;
+	grid-template-columns: 72px minmax(180px, 360px) 1fr;
+	grid-template-rows: 68px;
+	align-items: center;
+	gap: 22px;
+	padding: 0 clamp(16px, 4vw, 48px);
+	border-bottom: 1px solid var(--border);
+	width: 100%;
+	position: sticky;
+	top: 0;
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 14px;
+	}
+
+	input[type="text"] {
+		width: 100%;
+	}
+
+	.profile-picture {
+		width: 38px;
+		height: 38px;
+	}
+
+	ul li img {
+		cursor: pointer;
+	}
+
+	ul li > a > img:not(.profile-picture) {
+		width: 28px;
+		height: 28px;
+	}
+
+	button {
+		min-height: 40px;
+		padding: 0 15px;
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		color: var(--text);
+		background-color: var(--surface);
+		cursor: pointer;
+		font-size: 0.9rem;
+		font-weight: 600;
+		transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+	}
+
+	button:hover {
+		border-color: var(--accent);
+		background-color: var(--surface-hover);
+		transform: translateY(-1px);
+	}
+
+	.theme-toggle {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+	}
+
+	.theme-toggle span {
+		font-size: 1.1rem;
+	}
+
+	.menu-toggle {
+		display: none;
+	}
+
+	.nav-link-label {
+		display: none;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	> a img {
+		width: 34px;
+		height: 34px;
+	}
+
+	li {
+		display: flex;
+		align-items: center;
+	}
+}
+
+ul {
+	list-style-type: none;
+}
+
+:root[data-theme="light"] .navbar > a img,
+:root[data-theme="light"] .navbar ul li > a > img[src="/message.svg"],
+:root[data-theme="light"] .post-interaction img[src="/like.svg"],
+:root[data-theme="light"] .post-interaction img[src="/message.svg"] {
+	filter: invert(0.75);
+}
+
+@media (max-width: 560px) {
+	.navbar {
+		grid-template-columns: 38px minmax(0, 1fr) 40px;
+		grid-template-rows: 40px;
+		gap: 10px 14px;
+		padding: 10px 14px;
+	}
+
+	.navbar .user-search-container {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.navbar .menu-toggle {
+		grid-column: 3;
+		grid-row: 1;
+		width: 40px;
+		height: 40px;
+		padding: 9px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.navbar .menu-toggle span {
+		display: block;
+		width: 18px;
+		height: 2px;
+		border-radius: 2px;
+		background: currentColor;
+	}
+
+	.navbar ul {
+		position: absolute;
+		top: calc(100% + 8px);
+		right: 12px;
+		width: min(280px, calc(100vw - 24px));
+		padding: 8px;
+		display: none;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 4px;
+		border: 1px solid var(--border);
+		border-radius: 14px;
+		background: var(--surface);
+		box-shadow: var(--shadow);
+	}
+
+	.navbar ul.is-open {
+		display: flex;
+	}
+
+	.navbar ul li,
+	.navbar ul li > a,
+	.navbar ul li > button {
+		width: 100%;
+	}
+
+	.navbar ul li > a {
+		min-height: 42px;
+		gap: 10px;
+		padding: 0 12px;
+		border-radius: 9px;
+	}
+
+	.navbar ul li > a:hover {
+		background: var(--surface-hover);
+	}
+
+	.navbar ul li > a > img:not(.profile-picture) {
+		width: 22px;
+		height: 22px;
+	}
+
+	.navbar .nav-link-label {
+		display: inline;
+		font-size: 0.9rem;
+	}
+
+	.navbar ul li > button {
+		justify-content: flex-start;
+	}
+
+	.navbar button {
+		min-height: 36px;
+		padding: 0 10px;
+		font-size: 0.82rem;
+	}
+
+	.navbar .menu-toggle {
+		min-height: 40px;
+		padding: 9px;
+	}
+}

@@ -1,0 +1,68 @@
+.followers-list-container {
+	padding: 20px;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	background-color: var(--surface);
+	margin: 20px 0;
+}
+
+.followers-list-container h3 {
+	margin-top: 0;
+	color: var(--text);
+	border-bottom: 1px solid var(--border);
+	padding-bottom: 10px;
+}
+
+.followers-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.follower-item {
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	border-radius: 10px;
+	background-color: var(--surface-raised);
+	text-decoration: none;
+	color: inherit;
+	transition: background-color 0.3s ease;
+	border: 1px solid var(--border);
+}
+
+.follower-item:hover {
+	background-color: var(--surface-hover);
+	border-color: var(--accent);
+}
+
+.follower-item .profile-picture {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 12px;
+	border: 2px solid var(--border);
+}
+
+.follower-item .user-info {
+	flex: 1;
+}
+
+.follower-item .user-info h4 {
+	margin: 0;
+	color: var(--text);
+	font-size: 16px;
+}
+
+.follower-item .user-info p {
+	margin: 4px 0 0 0;
+	color: var(--text-muted);
+	font-size: 14px;
+}
+
+.followers-list-container p {
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+}

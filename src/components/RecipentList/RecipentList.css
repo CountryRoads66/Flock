@@ -1,0 +1,43 @@
+.recipent-list {
+	div {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 12px;
+		padding: 14px 16px;
+		border-bottom: 1px solid var(--border);
+		cursor: pointer;
+		transition: background-color 160ms ease;
+
+		&:hover {
+			background: var(--surface-hover);
+		}
+	}
+
+	h4 {
+		min-width: 0;
+		overflow: hidden;
+		color: var(--text);
+		font-size: 0.95rem;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	img {
+		width: 40px;
+		height: 40px;
+		flex: 0 0 auto;
+	}
+}
+
+@media (max-width: 640px) {
+	.recipent-list div {
+		justify-content: center;
+		padding: 12px 6px;
+	}
+
+	.recipent-list h4 {
+		display: none;
+	}
+}

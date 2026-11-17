@@ -1,0 +1,31 @@
+.follow-button {
+	padding: 8px 16px;
+	border: 1px solid var(--accent);
+	border-radius: 10px;
+	background-color: var(--accent);
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all 0.3s ease;
+}
+
+.follow-button:hover {
+	background-color: var(--accent-hover);
+	border-color: var(--accent-hover);
+}
+
+.follow-button.following {
+	background-color: var(--surface-raised);
+	border-color: var(--border-strong);
+	color: var(--text);
+}
+
+.follow-button.following:hover {
+	background-color: var(--surface-hover);
+	border-color: var(--border-strong);
+}
+
+.follow-button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}

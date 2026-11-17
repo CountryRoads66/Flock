@@ -1,0 +1,108 @@
+.friend-requests-container {
+	padding: 20px;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	background-color: var(--surface);
+	margin: 20px 0;
+}
+
+.friend-requests-container h3 {
+	margin-top: 0;
+	color: var(--text);
+	border-bottom: 1px solid var(--border);
+	padding-bottom: 10px;
+}
+
+.requests-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.request-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px;
+	border-radius: 10px;
+	background-color: var(--surface-raised);
+	border: 1px solid var(--border);
+	transition: background-color 0.3s ease;
+}
+
+.request-item:hover {
+	background-color: var(--surface-hover);
+	border-color: var(--accent);
+}
+
+.request-user {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	text-decoration: none;
+	color: inherit;
+}
+
+.request-user img {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 12px;
+	border: 2px solid var(--border);
+}
+
+.request-user .user-info {
+	flex: 1;
+}
+
+.request-user .user-info h4 {
+	margin: 0;
+	color: var(--text);
+	font-size: 16px;
+}
+
+.request-user .user-info p {
+	margin: 4px 0 0 0;
+	color: var(--text-muted);
+	font-size: 14px;
+}
+
+.request-actions {
+	display: flex;
+	gap: 8px;
+}
+
+.accept-btn,
+.reject-btn {
+	padding: 6px 12px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all 0.3s ease;
+}
+
+.accept-btn {
+	background-color: #28a745;
+	color: white;
+}
+
+.accept-btn:hover {
+	background-color: #218838;
+}
+
+.reject-btn {
+	background-color: #dc3545;
+	color: white;
+}
+
+.reject-btn:hover {
+	background-color: #c82333;
+}
+
+.friend-requests-container p {
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+}

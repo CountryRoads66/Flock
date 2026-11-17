@@ -1,0 +1,57 @@
+import React, { Suspense, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Lazy loading keeps the initial bundle smaller by loading pages only when needed.
+const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
+const Home = React.lazy(() => import("./pages/Home/Home"));
+const Login = React.lazy(() => import("./pages/Login/Login"));
+const Register = React.lazy(() => import("./pages/Register/Register"));
+const Profile = React.lazy(() => import("./components/Profile/Profile"));
+const Footer = React.lazy(() => import("./components/Footer/Footer"));
+const Posts = React.lazy(() => import("./components/Posts/Posts"));
+const Messages = React.lazy(() => import("./pages/Messages/Messages"));
+
+function App() {
+	// Keep the current theme in local storage so the selected mode persists across reloads.
+	const [theme, setTheme] = useState<"light" | "dark">(() =>
+		window.localStorage.getItem("theme") === "light" ? "light" : "dark"
+	);
+
+	// Apply the theme to the root document so the CSS variables used by the app are updated.
+	useEffect(() => {
+		document.documentElement.dataset.theme = theme;
+		window.localStorage.setItem("theme", theme);
+	}, [theme]);
+
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<div className='content'>
+					<Navbar
+						theme={theme}
+						onThemeToggle={() =>
+							setTheme((currentTheme) =>
+								currentTheme === "dark" ? "light" : "dark"
+							)
+						}
+					/>
+					{/* Suspense gives us a loading state while lazy-loaded views are fetched. */}
+					<Suspense fallback={<div>loading...</div>}>
+						<Routes>
+							<Route index path='/' element={<Home />} />
+							<Route path='/login' element={<Login />} />
+							<Route path='/register' element={<Register />} />
+							<Route path='/*' element={<Home />} />
+							<Route path='/profile/:id' element={<Profile />} />
+							<Route path='/messages' element={<Messages />}></Route>
+							<Route path='/posts/:id' element={<Posts />}></Route>
+						</Routes>
+					</Suspense>
+					<Footer />
+				</div>
+			</BrowserRouter>
+		</div>
+	);
+}
+
+export default App;

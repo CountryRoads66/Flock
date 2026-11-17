@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import getRecipentsData from "../../hooks/getRecipentData";
+import "./Conversation.css";
+interface messages {
+	senderId: string;
+	recipentId: string;
+	id: number;
+	text: string;
+}
+interface RecipentsData {
+	username: string;
+	profilePicture: string;
+	profileId: string;
+}
+interface props {
+	messages: messages[];
+	recipents: RecipentsData[];
+	recipent: string;
+}
+const Conversation = (props: props) => {
+	const [recipent, setRecipent] = useState<Array<RecipentsData>>([
+		{
+			username: "string",
+			profilePicture: "string",
+			profileId: "string",
+		},
+	]);
+	useEffect(() => {
+		getRecipentsData([props.recipent]).then((data) => {
+			setRecipent(data);
+		});
+	}, [props.recipent]);
+	return (
+		<div className='conversation-container'>
+			{props.messages.map((e) =>
+				e.text === null ? (
+					<></>
+				) : e.senderId === window.localStorage.getItem("profileId") ? (
+					<div className='right' key={e.id}>
+						<h4>{window.localStorage.getItem("username")}</h4>
+						<img
+							src={window.localStorage.getItem("profilePicture") ?? "user.svg"}
+							alt=''
+							className='profile-picture'
+						/>
+						<p>{e.text}</p>
+					</div>
+				) : (
+					<div className='left' key={e.id}>
+						<h4>{recipent[0].username}</h4>
+						<img
+							src={recipent[0].profilePicture}
+							alt=''
+							className='profile-picture'
+						/>
+						<p>{e.text}</p>
+					</div>
+				)
+			)}
+		</div>
+	);
+};
+
+export default Conversation;
